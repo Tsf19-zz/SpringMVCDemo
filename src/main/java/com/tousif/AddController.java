@@ -46,7 +46,7 @@ public class AddController {
 		modelAndView.addObject("result",k);
 		
 		
-		return modelAndView;
+		return modelAndView; //Passing both display page and result in an Object
 	}
 
 }
