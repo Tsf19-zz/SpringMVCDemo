@@ -5,7 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.service.AddService;
 
 @Controller //1. Indicates that an annotated class is a "Controller" (e.g. a web controller).
 public class AddController {
@@ -20,13 +23,16 @@ public class AddController {
 	
 //	4.Now actually Adding Two Numbers.
 	@RequestMapping("/add")
-	public ModelAndView adding( HttpServletRequest request, HttpServletResponse response ) {
+///*7.1*/	public ModelAndView adding( HttpServletRequest request, HttpServletResponse response ) {
+/*7.2*/public ModelAndView adding( @RequestParam("t1") int i, @RequestParam("t2") int j ) {
 		
 		System.out.println("I'm in Controller");
 
-		int i = Integer.parseInt(request.getParameter("t1"));
-		int j = Integer.parseInt(request.getParameter("t2"));
-		int k = i + j;
+///*7.3*/int i = Integer.parseInt(request.getParameter("t1"));
+///*7.4*/int j = Integer.parseInt(request.getParameter("t2"));
+		
+		AddService as = new AddService();
+		int k = as.add(i, j);
 		
 //		5.To pass the values, we need to use "ModelAndView Object"
 		
